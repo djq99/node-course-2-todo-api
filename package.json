@@ -11,7 +11,7 @@
   "engines":{
     "node":"9.4.0",
   },
-  "author": "",
+  "author": "Jiaqi Duan",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.2",
