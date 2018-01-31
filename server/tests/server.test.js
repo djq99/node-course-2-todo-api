@@ -166,17 +166,12 @@ describe('PATCH /todos/:id',()=>{
     .patch(`/todos/${hexId}`)
     .send(body)
     .expect(200)
-    .end((err,res)=>{
-      if(err){
-        return done(err);
-      }
-      Todo.findById(hexId).then((todo)=>{
-        expect(todo.text).toBe(body.text);
-        expect(todo.completed).toBe(body.completed);
-        expect(todo.completedAt).toNotExist();
-        done();
-      }).catch((e)=> done(e));
-    })
+    .expect((res)=>{
+          expect(res.body.todo.text).toBe(body.text);
+          expect(res.body.todo.completed).toBe(body.completed);
+          expect(res.body.todo.completedAt).toNotExist();
+        })
+        .end(done);
 
   })
 
