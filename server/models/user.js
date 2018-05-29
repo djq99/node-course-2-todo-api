@@ -43,6 +43,7 @@ UserSchema.methods.toJSON = function(){
 UserSchema.methods.generateAuthToken = function(){
   const user = this;
   const access = 'auth';
+  console.log("*******************"+process.env.JWT_SECRET);
   const token = jwt.sign({_id: user._id.toHexString(), access},process.env.JWT_SECRET).toString();
 
   user.tokens.push({
